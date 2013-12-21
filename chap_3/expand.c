@@ -28,8 +28,7 @@ void expand( char s1[],char s2[])
       /*  now expand from -> to, always print from,to but only expand if from < to */
       if(from=='-')
         s2[j++]=from;
-      else
-        from++;
+      from++;
       while(from < to )
         s2[j++] = from++;
       if(to=='-')
