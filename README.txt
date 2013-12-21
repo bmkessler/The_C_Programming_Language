@@ -1,2 +1,0 @@
-A repository of source code to the book "The C Programming Language" by Brian W. Kernighan and Dennis M. Ritchie
-Code is based on sequential reading through the book and may not be the most efficient or effective way to sovle a particular problem
