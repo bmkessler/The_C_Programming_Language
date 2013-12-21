@@ -1,0 +1,30 @@
+INTEL CONFIDENTIAL
+2013WW05 Weekly Report
+To:  Andy Sowers
+From:  Brian Kessler
+
+EBM-9000
+
+NNI.  Nathan in Japan this week for F2F.  See his weekly for details.
+
+X74A CMCM BORNEO  Confirmation lots on final etch recipe are at 3rd level this week.  Will go over analysis and template when lots print and results are ready.
+
+X74A PLP BORNEO  Marilyn/Wei Model lots are in-line.  Will go over analysis and template when lots print and results are ready.
+
+X74A CMC BORNEO Mahesh has setup the model parameters 14.9 nm gamma and 40 mm sigmaL as well as static map with large radial component and center bull's eye based on the data.  He will work on standardizing a procedure and format for data.  With more versions of EDS (CMCM, CMC, PLP) coming, still open is an effective tracking system to determine what lots received what corrections.  Will need to roll this into final automation.  Confirmation lots still in LSW queue, will need to prioritize once EDS calculations are complete.
+
+Pre/Post C2 strip Waiting for Baha to present results of the model now that he has all the calibration data from the blank stack experiments.  Max discussed incoming blank flatness measurements as a function of film deposition on 10 blanks from next 3 shipments with Shin Etsu to determine variability, ECD ~April. In parallel, we are getting equivalent measurements on TFCMoSi KAMAKURA for comparison.  REG showed smaller shift as expected, awaiting flatness measurements.
+
+LMS-CIP   Metro is measuring,  LMS07 data complete after data is collected will review results, ECD WW04-05.
+
+Barometric Correction  Automated logging check complete with email warning and logging the values back to the database.  As a side effect, the automation has been highlighting issues with parameters (Vmark or pressure) not being logged.  Sakai-san has fix for eoschk bug for writes spanning multiple days ready.  Waiting for release.  Presented automation to group and RFC in place for OOC’s.  NFT has the open to determine an effective check for the correction being enabled before tool handoff to avoid EBM18 issue after DEF reset. FWP ECD WW06-07.
+
+Beam Drift  Changing the Vmark on EBM11 did not improve performance and tool will need deflector replacement after EBM09.  We are still lacking an effective monitoring system on the 5k6k platform.  In discussion with Safak for incorporating TokyoD monitoring on 7k8k into either EPSPC or KAMAKURA.  Initial chip design of 1 mm x 1 mm, but now will redesign to 2 mm x 1 mm since the available area is larger.  Will make some rough estimates of whether we expect to be able to measure degradation and then run test prints on the best and worst beams.
+ 
+Fab REG issue EBM11 PLP mismatch issue resurfaced again this week due to issue at Fab 68.  Initial discussion was rather fruitless as there was not a clear problem statement from the VF.  Met with Wei, Yi-ping, Yulia to go over the discussion of the previous issue and replicate that analysis with the thought that the issue may be recurrence of original issue, which seems to be discrepancy between alignment and metrology sites, but a clear measured correlation is lacking.  Requesting more information from the fab.  In parallel, for 7k8k working with Prashant to pull the scribeline data that is being measured and passed to fab, but currently nothing is being down with it.  Will check to see recent performance, previous discrepancy was ~1 nm at 1x, but was done prior to deflector screening. Will look into incorporating the scribeline sites into a FB map to test, whether we should be correcting all of these sites and not treating them differently.
+
+Training:  NSTR
+
+Vacation:  Feb. 19-March 5 (Honeymoon)
+
+

@@ -1,0 +1,21 @@
+
+  while(line[start]!='\0'){
+  /* find the last break */
+    for(i=0; i<FOLDLEN && line[start+i] != '\0'; i++) {
+       if(line[start+i]==' ' || line[start+i]=='\t')
+	     lastbreak = start + i;
+    }
+  if(lastbreak){
+    stop = lastbreak;  /* break at the last blank  */
+  } else {
+    stop = start+i; /* break at the edge */
+  }
+  /* print the line */
+  for(i=start;i<stop;i++) {
+  /*  putchar(line[i]); */
+  }
+  putchar('\n');
+  start = stop;
+/*  if(lastbreak)
+    start++;
+*/  
