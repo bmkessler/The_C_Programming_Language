@@ -9,13 +9,14 @@ void expand( char s1[],char s2[])
   for(i = 0; i<=strlen(s1); i++)
     if(s1[i] == '-'){ /* expand on dash */
       if(i==0) {  /* start of the string is '-' */
-        if(s1[i+1]!='\0') {/* catch pathological "-" string */
-          from = s1[i];
-          to = s1[i+1];
-        } else {
+        if(s1[i+1]=='\0') {/* catch pathological "-" string */
           s2[j++]=s1[i];  /* just return the pathological string */
           s2[j]='\0';
           return;
+        } else {
+          from = s1[i];
+          s2[j++]=from;
+          to = s1[i+1];
         }
       } else if( (i+1)<strlen(s1) ) {  /* middle of the string */
         from = s1[i-1];
@@ -25,16 +26,19 @@ void expand( char s1[],char s2[])
         to = s1[i];
       }
       
-      /*  now expand from -> to, always print from,to but only expand if from < to */
-      if(from=='-')
-        s2[j++]=from;
-      from++;
-      while(from < to )
-        s2[j++] = from++;
-      if(to=='-')
+      /*  now expand from -> to, always print from, to */
+      if(from < to) {  /* from less than to, count up */
+        from++;
+        while(from < to )
+          s2[j++] = from++;
+      } else {  /* from greater than to, count down */
+        from--;
+        while(from > to)
+          s2[j++] = from--;
+      }
+      if(to=='-')  /* if ending on the dash, print it */
         s2[j++]='-';
-      
-      
+
     } else {  /* just copy s1 to s2 */
       s2[j++]=s1[i];
     }
@@ -44,7 +48,7 @@ void expand( char s1[],char s2[])
 main()
 {
 
-  char test1[] = "a-z";
+  char test1[] = "z-a";
   char test2[1000];
   char test3[] = "a-b-c";
   char test4[1000];
@@ -52,7 +56,7 @@ main()
   char test6[1000];
   char test7[] = "a-z0-9";
   char test8[1000];
-  char test9[] = "-a-z";
+  char test9[] = "-a-z-";
   char test0[1000];
   printf("%s\n",test1);
   expand(test1,test2);
