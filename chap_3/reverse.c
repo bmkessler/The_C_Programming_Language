@@ -1,7 +1,7 @@
 # include <string.h>
 # include <stdio.h>
 
-/* reverse: revers a string s in place */
+/* reverse: reverse a string s in place */
 void reverse( char s[])
 {
   int c,i,j;
