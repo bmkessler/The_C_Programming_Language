@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <string.h>
-# include <limits.h>
+# include <limits.h>  /* for testing only */
 
 # define MAXSTRING 1000
 

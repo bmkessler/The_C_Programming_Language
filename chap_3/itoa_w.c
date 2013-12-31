@@ -1,6 +1,5 @@
 # include <stdio.h>
 # include <string.h>
-# include <limits.h>
 
 # define MAXSTRING 1000
 
@@ -20,7 +19,7 @@ void itoa(int n, char s[], int w)
   do{  /* generate digits in reverse order */
     s[i++] = t % 10 + '0';  /* get next digit  */
   } while( (t /= 10) > 0 );                /* delete it */
-  while((i+(sign<0))<w)
+  while((i+(sign<0))<w)  /* count the sign as part of the width */
     s[i++]='0';
   if( sign < 0 )
     s[i++] = '-';

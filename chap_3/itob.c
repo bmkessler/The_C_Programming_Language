@@ -1,6 +1,5 @@
 # include <stdio.h>
 # include <string.h>
-# include <limits.h>
 
 # define MAXSTRING 1000
 
@@ -51,7 +50,7 @@ main()
   n = 9;
   itob(n,test,16);
   printf("%d  %s\n",n,test);
-  n = INT_MAX;
+  n = -45;
   itob(n,test,16);
   printf("%d  %s\n",n,test);
   
