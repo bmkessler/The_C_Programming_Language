@@ -34,6 +34,13 @@ main()
       op2 = pop();
       push(pop() / op2);
       break;
+    case '%':
+      op2 = pop();
+      push(pop() / op2);
+      break;
+    case 'n':  // unary negation
+      push(-1.0*pop());
+      break;
     case '\n':
       printf("\t%.8g\n",pop());
       break;
