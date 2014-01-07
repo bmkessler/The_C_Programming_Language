@@ -7,6 +7,10 @@
 int getop( char []);
 void push(double);
 double pop(void);
+void printop(void);
+void dup(void);
+void swap(void);
+void clearstack(void);
 
 /* reverse Polish calculator */
 main()
@@ -38,7 +42,7 @@ main()
       op2 = pop();
       push(pop() / op2);
       break;
-    case 'n':  // unary negation
+    case 'n':  /* unary negation */
       push(-1.0*pop());
       break;
     case '\n':
@@ -75,6 +79,46 @@ double pop(void)
     printf("error: stack empty\n");
     return 0.0;
   }
+}
+
+/* printop: print the top value from the stack without popping it */
+void printop(void)
+{
+  if(sp > 0)
+    printf("%g\n", val[sp-1]);
+  else
+    printf("error: stack empty\n");
+}
+
+/* dup: duplicate the top element of the stack */
+void dup(void)
+{
+  double tmp;
+  
+  if(sp > 0) {
+    tmp = val[sp-1];
+    val[sp++] = tmp;
+  } else
+    printf("error: stack empty\n");
+}
+
+/* swap: swap the top two elements in the stack */
+void swap(void)
+{
+  double tmp;
+  
+  if(sp > 1) {
+    tmp = val[sp-1];
+    val[sp-1] = val[sp-2];
+    val[sp-2] = tmp;
+  } else
+    printf("error: stack does not have at least two elements\n");
+}
+
+/* clearstack:  clears the stack by reseting the stack pointer */
+void clearstack(void)
+{
+  sp = 0;
 }
 
 #include <ctype.h>
