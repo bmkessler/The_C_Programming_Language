@@ -4,6 +4,7 @@
 
 #define MAXOP    100  /* max size of operand or operator */
 #define NUMBER  '0'  /* signal that a number was found */
+# define NUMVAR 26  /* the number of variables allowed currently all lowercase letters */
 
 int getop( char []);
 void push(double);
@@ -19,6 +20,7 @@ main()
   int type;
   double op2;
   char s[MAXOP];
+  double var[NUMVAR];  /* note the variables are not initialized */
   
   while ((type = getop(s)) != EOF) {
     switch (type) {
@@ -65,11 +67,22 @@ main()
       op2 = pop();
       push(pow(pop(),op2));
       break;
+    case '=':  /* assign the top of the stack to the following variable, ie. 2 = e */
+      type = getop(s);  /* get the next op which should be a variable, need error catching if not */
+      if( type >= 'a'  && type <= 'z') {
+        var[type-'a'] = pop();
+        push(var[type-'a']);
+      } else
+        printf("variables must be between a-z\n");
+      break;
     case '\n':
       printf("\t%.8g\n",pop());
       break;
-    default:
-      printf("error: unknown command %s\n", s);
+    default:  /* catch variable usage here */
+      if( type >= 'a'  && type <= 'z')  /* push the variable onto the stack */
+        push( var[type-'a'] );
+      else
+        printf("error: unknown command %s\n", s); /* if not above or a variable */
       break;
     }
   }
@@ -105,7 +118,7 @@ double pop(void)
 void printop(void)
 {
   if(sp > 0)
-    printf("%g\n", val[sp-1]);
+    printf("\t%.8g\n", val[sp-1]);
   else
     printf("error: stack empty\n");
 }
@@ -146,7 +159,7 @@ void clearstack(void)
 int getch(void);
 void ungetch(int);
 
-/* getop: get next operator or numberic operand */
+/* getop: get next operator or numeric operand */
 int getop( char s[])
 {
   int i, c;
