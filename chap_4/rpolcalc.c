@@ -79,7 +79,7 @@ main()
       printf("\t%.8g\n",pop());
       break;
     default:  /* catch variable usage here */
-      if( type >= 'a'  && type <= 'z')  /* push the variable onto the stack */
+      if( type >= 'a'  && type <= 'z')  /* push the variable onto the stack, note variables that share names with functions can never be retrieved */
         push( var[type-'a'] );
       else
         printf("error: unknown command %s\n", s); /* if not above or a variable */
@@ -158,6 +158,7 @@ void clearstack(void)
 
 int getch(void);
 void ungetch(int);
+void ungets(char[]);
 
 /* getop: get next operator or numeric operand */
 int getop( char s[])
@@ -198,4 +199,11 @@ void ungetch(int c)  /* push back character on input */
     printf("ungetch: too many characters\n");
   else
     buf[bufp++] = c;
+}
+
+void ungets(char s[])  /* push back a whole string on the input */
+{
+  int i = 0;
+  while(s[i] != '\0')
+    ungetch(s[i++]);
 }
