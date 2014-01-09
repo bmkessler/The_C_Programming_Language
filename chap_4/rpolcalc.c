@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>   /* for atof() */
+#include <math.h>  /* for math functions sin, cos, etc. */
 
 #define MAXOP    100  /* max size of operand or operator */
 #define NUMBER  '0'  /* signal that a number was found */
@@ -44,6 +45,25 @@ main()
       break;
     case 'n':  /* unary negation */
       push(-1.0*pop());
+      break;
+    case 's':  /* sin function */
+      push(sin(pop()));
+      break;
+    case 'c':  /* cos function */
+      push(cos(pop()));
+      break;
+    case 't':  /* tan function */
+      push(tan(pop()));
+      break;
+    case 'l':  /* log function */
+      push(log(pop()));
+      break;
+    case 'e':  /* exp function */
+      push(exp(pop()));
+      break;
+    case 'p':  /* pow function */
+      op2 = pop();
+      push(pow(pop(),op2));
       break;
     case '\n':
       printf("\t%.8g\n",pop());
