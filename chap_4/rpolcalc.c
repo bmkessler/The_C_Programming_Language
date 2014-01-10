@@ -178,7 +178,7 @@ int getop( char s[])
     while ( isdigit(s[++i] = c = getch()))
       ;
   s[i] = '\0';
-  if (c != EOF)
+  /*if (c != EOF)  not sure why the text says EOF is not handled appropriately, it seems fine to me */
     ungetch(c);
   return NUMBER;
 }
