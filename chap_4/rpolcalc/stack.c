@@ -3,8 +3,8 @@
 
 # define MAXVAL 100  /* the maximum depth of the val stack */
 
-int sp = 0;         /* the next free stack position */
-double val[MAXVAL];  /* value stack */
+static int sp = 0;         /* the next free stack position */
+static double val[MAXVAL];  /* value stack */
 
 /* push: push f onto value stack */
 void push(double f)
