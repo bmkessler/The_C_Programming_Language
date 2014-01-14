@@ -5,13 +5,17 @@
 /* getop: get next operator or numeric operand */
 int getop( char s[])
 {
-  int i, c;
+  int i;
+  static int c = ' ';  /* initialize to white space for check */
 
-  while ((s[0] = c = getch()) == ' ' || c == '\t')
-    ;  /* skip white space and tabs */
+  while ((s[0] = c ) == ' ' || c == '\t')
+    c = getch();  /* skip white space and tabs assign in the loop for static implemetation */
   s[1] = '\0';
-  if(!isdigit(c) && c != '.')
-    return c;  /* not a number */
+  if(!isdigit(c) && c != '.') {
+    i = c;
+    c = getch();
+    return i;  /* not a number */
+   }
   i = 0;
   if (isdigit(c))  /* collect integer part */
     while ( isdigit(s[++i] = c = getch()))
@@ -20,7 +24,6 @@ int getop( char s[])
     while ( isdigit(s[++i] = c = getch()))
       ;
   s[i] = '\0';
-  /*if (c != EOF)  not sure why the text says EOF is not handled appropriately, it seems fine to me */
-    ungetch(c);
+  /* note c will retain previous value on next call and skip initialization */
   return NUMBER;
 }
