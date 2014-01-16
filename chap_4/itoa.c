@@ -16,7 +16,7 @@ main()
   printf("%s %d\n", test,i);
 }
 
-/* itoa: print n in decimal, p is a counter, can't be static or won't reset on first call, bad programming style */
+/* itoa: print n in decimal, p is a counter for width, returns width of string */
 int itoa( int n, char s[],int p)
 {
   int i = p;
