@@ -17,10 +17,3 @@ void ungetch(int c)  /* push back character on input */
   else
     buf[bufp++] = c;
 }
-
-void ungets(char s[])  /* push back a whole string on the input */
-{
-  int i = 0;
-  while(s[i] != '\0')
-    ungetch(s[i++]);
-}
