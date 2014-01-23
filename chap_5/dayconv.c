@@ -59,3 +59,13 @@ void month_day(int year, int yearday, int *pmonth, int *pday)
     printf("Error: year %d does not have %d days in it\n",year,yearday);
   }
 }
+
+/* month_name: return the name of the n-th month */
+char *month_name(int n)
+{
+  static char *names[] = { "Illegal Month", "January", "February", "March", "April",
+                          "May", "June", "July", "August", "September", "October",
+                          "November", "December"};
+  
+  return (n < 1 || n > 12) ? names[0] : names [n];
+}
