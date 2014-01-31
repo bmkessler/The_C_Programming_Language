@@ -1,0 +1,4 @@
+opens:
+
+Ex 5-11 modify entab and detab to accept command line arguments
+Ex 5-12 modify them further to accept shorthand starting at -m and every n comluns

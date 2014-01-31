@@ -7,18 +7,30 @@ char *lineptr[MAXLINES];   /* pointers to text lines   */
 int readlines(char *lineptr[], int nlines);
 void writelines(char *lineptr[], int nlines);
 
-void qsort(void *lineptr[], int left, int right, int (*comp)(void *, void *) );
+void qsort(void *lineptr[], int left, int right, int (*comp)(void *, void *), int reverse );
 int numcmp(char *, char *);
 
 int main( int argc, char *argv[])
 {
   int nlines;       /* number of input lines read */
-  int numeric = 0;  /* 1 if numeric sort */
+  int c, numeric = 0, reverse = 0; /*flags for options */
   
-  if(argc > 1 && strcmp( argv[1], "-n") == 0)
-    numeric = 1;
+
+  while(--argc > 0 && (*++argv)[0] == '-') 
+    while(c = *++argv[0]) 
+      switch(c) {
+        case 'n':
+          numeric = 1;
+          break;
+        case 'r':
+          reverse = 1;
+          break;
+        default:
+          printf("sort: illegal option %c\n",c);
+          break;
+      }
   if((nlines = readlines(lineptr,MAXLINES)) >= 0) {
-    qsort((void **) lineptr, 0, nlines-1, (int (*)(void*,void*))(numeric ? numcmp : strcmp));
+    qsort((void **) lineptr, 0, nlines-1, (int (*)(void*,void*))(numeric ? numcmp : strcmp),reverse);
     writelines(lineptr,nlines);
     return 0;
   } else {
@@ -27,8 +39,8 @@ int main( int argc, char *argv[])
   }
 }
 
-/* qsort: sort v[left]...v[right] into increasing order */
-void qsort(void *v[], int left, int right, int (*comp)(void *, void *))
+/* qsort: sort v[left]...v[right] into increasing/decreasing order via reverse */
+void qsort(void *v[], int left, int right, int (*comp)(void *, void *),int reverse)
 {
   int i, last;
   void swap(void *v[], int, int);
@@ -38,11 +50,11 @@ void qsort(void *v[], int left, int right, int (*comp)(void *, void *))
   swap(v,left, (left + right) /2);
   last = left;
   for(i = left+1; i <= right; i++)
-    if((*comp)(v[i],v[left]) < 0)
+    if((*comp)(v[i],v[left]) < 0 == !reverse)
       swap(v, ++last, i);
   swap(v, left, last);
-  qsort(v, left, last-1, comp);
-  qsort(v, last+1, right, comp);
+  qsort(v, left, last-1, comp, reverse);
+  qsort(v, last+1, right, comp, reverse);
 }
 
 # define MAXLEN 1000 /* max length of any input line */
