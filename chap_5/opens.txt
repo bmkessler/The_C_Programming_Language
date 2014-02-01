@@ -5,3 +5,6 @@ Ex 5-12 modify them further to accept shorthand starting at -m and every n comlu
 Ex 5-15 -f fold lines, to only fold during sorting.
 Ex 5-16 -d directory flag for sort
 Ex 5-17 field tags for sort
+Ex 5-18 Make dcl recover from input errors
+Ex 5-19 Modify undcl so that it does not add unnecessary parentheses
+Ex 5-20 Expend dcl to handle declarations with function argument types, qualifiers like const and so on
