@@ -2,3 +2,6 @@ opens:
 
 Ex 5-11 modify entab and detab to accept command line arguments
 Ex 5-12 modify them further to accept shorthand starting at -m and every n comluns
+Ex 5-15 -f fold lines, to only fold during sorting.
+Ex 5-16 -d directory flag for sort
+Ex 5-17 field tags for sort
