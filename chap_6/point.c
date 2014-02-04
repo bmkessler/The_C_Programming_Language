@@ -55,3 +55,19 @@ struct rect(struct rect r)
   temp.pt2.y = max(r.pt1.y, r.pt2.y);
   return temp;
 }
+
+struct point *pp;
+
+struct point origin, *pp;
+
+pp = &origin;
+printf("origin is (%d,%d)\n", (*pp).x, (*pp).y);
+
+printf("origin is (%d,%d)\n", pp->x, pp->y);
+
+struct rect r, *rp = &r;
+
+r.pt1.x;
+rp->pt1.x;
+(r.pt1).x;
+(rp->pt1).x;
