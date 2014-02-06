@@ -2,3 +2,4 @@ Ex 6-1 modify getword to properly handle underscores, string constants, comments
 Ex 6-2 write a program to print in alphabetical order the words that differ after the first 6 characters, ignore comments and strings, make 6 settable via the command line
 Ex 6-3 write a crossreferencer that prints each word and then list of line numbers that it appears on, remove noise words like "the" "and" etc.
 Ex 6-4 write a program to print the distinct words in decreasing order
+Ex 6-6 Implement a simple version of the define processor
