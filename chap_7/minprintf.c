@@ -11,7 +11,7 @@ void minprintf(char *fmt, ...)
   
   va_start(ap, fmt);  /* make ap point to the first unnamed argument */
   for(p = fmt; *p; p++) {
-    if( *p != '%' ) {
+    if( *p != '%' ) { 
       putchar(*p);
       continue;
     }
@@ -20,9 +20,21 @@ void minprintf(char *fmt, ...)
         ival = va_arg(ap, int);
         printf("%d",ival);
         break;
+      case 'u':
+        ival = va_arg(ap, int);
+        printf("%u",ival);
+        break;
+      case 'c':
+        ival = va_arg(ap, int);
+        printf("%c",ival);
+        break;
       case 'f':
         dval = va_arg(ap, double);
         printf("%f",dval);
+        break;
+      case 'g':
+        dval = va_arg(ap, double);
+        printf("%g",dval);
         break;
       case 's':
         for( sval = va_arg(ap, char *); *sval; sval++)
@@ -41,6 +53,7 @@ main()
   int i = 123;
   double d = -4.1349;
   char s[] = "The Deuce!";
+  char c = 't';
   
-  minprintf("int: %d, double: %f, string: %s\n",i,d,s);
+  minprintf("int: %d, double: %f, string: %s, char: %c\n",i,d,s,c);
 }
