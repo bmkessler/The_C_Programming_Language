@@ -1,0 +1,2 @@
+Ex 7-8 write a program to print a set of files from cmd line with each on a new page with titles and page numbers
+Ex 7-9 isuppper() can be implemented to save space or time, explore both
